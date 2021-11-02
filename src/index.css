@@ -11,3 +11,371 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+html {
+  scroll-behavior: smooth;
+  font-family: "Arial", sans-serif;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 16px;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+  height: 100%;
+  overflow: hidden !important;
+}
+.scroll-pane-container {
+  position: relative;
+}
+main {
+  width: inherit;
+  height: inherit;
+  width: auto;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  color: #dde0e6;
+}
+/*https://www.canva.com/colors/color-palettes/dark-metal/*/
+/*vertical phones*/
+@media (min-width: 0px) {
+  #drum-machine {
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    overflow: hidden !important;
+  }
+  #panel {
+    background-color: #0B0909;
+    width: 100%;
+    height: 50%;
+  }
+
+  #drumpads {
+    background-color: #0B0909;
+    width: 100%;
+    height: 50%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3,33%);
+    gap: 5px;
+  }
+  .drum-pad {
+    background: #212121;
+    display: inline-block;
+    caret: transparent;
+    user-select: none;
+  }
+  .drum-pad:hover {
+    cursor: pointer;
+  }
+   #panelhead {
+    background-color: #44444C;
+    grid-row-gap: 0px;
+    margin-top: 10px;
+  }
+
+  #panelmastervolume{
+    margin-top: 15px;
+  }
+    #drumpadname {
+    margin-top: 10px;
+    font-weight: 600;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #000B70;
+  }
+  .rainbow {
+    margin-top: -10px;
+    background: white;
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet) dashed;
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 10px;
+    height: auto;
+  }
+  #drumedition {
+    color: #53535E;
+    text-shadow: 0 0 2px #3C3C44;
+  }
+  /*https://codepen.io/aniketkudale/pen/PoqmexO*/
+  #powerbtn{
+    width: 50px;
+    height: 50px;
+    transition: all 500ms;
+    border: 2px solid #161212;
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    animation: rotate 1.5s linear infinite;
+    position: relative;
+  }
+   #powerbtn > span {
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    border-radius: 100%;
+  }
+
+  #powerbtn:nth-child(1) {
+    filter: blur(5px);
+  }
+
+  #powerbtn:nth-child(2) {
+    filter: blur(10px);
+  }
+
+  #powerbtn:nth-child(3) {
+    filter: blur(25px);
+  }
+
+  #powerbtn:nth-child(4) {
+    filter: blur(150px);
+  }
+    #svgpowerbtn {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    pointer-events: none;
+    width: 30px;
+    height: auto;
+  }
+  @keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+  #powerbtn:hover {
+    cursor:pointer;
+  }
+  .padpowerbtn {
+    background-color: #D6D6D6;
+    width: 90%;
+    height: 90%;
+    transition: all 500ms;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    pointer-events: none;
+    color: black;
+  }
+  .bi {
+    font-size: 30px;
+  }
+  #powerbtnactive{
+    display: none;
+  }
+  #powerbtnactive:checked + #powerbtn > .padpowerbtn{
+    background-color: #0B0909;
+  }
+  #powerbtnactive:checked + #powerbtn > #powercover {
+    opacity: 1;
+  }
+  #powercover {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #0B0909;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    pointer-events: none;
+    color: black;
+    opacity: 0;
+    transition: all 1000ms;
+  }
+  #powerbtn:hover > .padpowerbtn {
+    color: white;
+    background-color: #212121;
+    transition: all 500ms;
+  }
+
+  #panelloop {
+    margin-top: 15px;
+  }
+
+  #loopbtn{
+    width: 60px;
+    height: 60px;
+    transition: all 500ms;
+    border: 2px solid #212121;
+    background: #212121;
+  }
+  .insidepowerbtn {
+    background-color: #212121;
+    width: 90%;
+    height: 90%;
+    transition: all 500ms;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    pointer-events: none;
+  }
+
+  #loopbtn:hover,#padsdrumsbtn:hover, #padsothersbtn:hover{
+    background-color: #2C2C2C;
+    cursor:pointer;
+  }
+  #loopselect {
+    width: 100%;
+  }
+  #panelpads {
+    margin-top: 15px;
+  }
+  #display {
+    width: 100%;
+    height: 30px;
+    caret: transparent;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+  }
+
+  #padsvolume {
+    width: 100%;
+  }
+  .drumothers {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2,auto);
+  }
+  #padsdrumsbtn, #padsothersbtn {
+    width: 70px;
+    height: 70px;
+    transition: all 500ms;
+    border: 2px solid #212121;
+    background: #212121;
+  }
+  #padsdrumsbtn > div, #padsothersbtn > div {
+    caret: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    pointer-events: none;
+
+  }
+  /*start of customizing range
+    Customize range is based on CSS Portal
+  */
+  input[type=range] {
+    height: 33px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+    height: inherit;
+    background: #0B0909;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    background-color: #44444C;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 25px;
+    width: 35px;
+    border-radius: 4px;
+    background: #FFFFFF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -3.5px;
+  }
+  input[type=range]:active::-webkit-slider-runnable-track {
+    background-image: radial-gradient(circle at 10% 20%, rgb(253, 239, 132) 0%, rgb(247, 198, 169) 54.2%, rgb(21, 186, 196) 100.3%);
+}
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 25px;
+    width: 40px;
+    border-radius: 11px;
+    background: #FFFFFF;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    border-color: #44444C;
+    color: transparent;
+  }
+  input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 25px;
+    width: 40px;
+    border-radius: 11px;
+    background: #FFFFFF;
+    cursor: pointer;
+  }
+  /*--end of customizing range--*/
+}
+
+@media (max-width: 575px) {
+  #panel {
+    display:none;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #panel {
+    height: 50%;
+  }
+  #drumpads {
+    grid-template-columns: repeat(3,31%);
+    grid-template-rows: repeat(3,31%);
+    height: 50%;
+    align-content:center;
+    justify-content:center;
+  }
+  .drum-pad {
+    height: 100%;
+    width: 100%;
+
+  }
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  #drum-machine {
+    width: 992px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { }
